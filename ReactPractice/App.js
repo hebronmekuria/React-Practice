@@ -11,12 +11,10 @@ function App(){
       <Stack.Navigator initialRouteName='Home'>
       {/* This is the main or defaul screen the app opens  */}
       <Stack.Screen name="Home" component={HomeScreen} /> 
-        <Stack.Screen name="NewScreen" component={NewScreen} />
-
+      <Stack.Screen name="NewScreen" component={NewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
-
 
 export default App;
