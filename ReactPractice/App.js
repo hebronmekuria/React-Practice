@@ -1,75 +1,22 @@
-import {useState} from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  StyleSheet,
-  Image,
-  TextInput,
-} from 'react-native';
+import { NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './HomeScreen';
+import NewScreen from './NewScreen';
 
-const logo = require('/Users/hebronmekuria/React-Practice/ReactPractice/assets/heart.png');
-const Login = () => {
-  const [username, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>Twin Tok</Text>
-        <Image source={logo} style={styles.heart} />
-        <View style={styles.input}>
-          <TextInput
-            value={username}
-            onChangeText={setUserName}
-            placeholder="Username"
-            style={styles.username}
-          />
-          <TextInput
-            value={password}
-            onChangeText={setPassword}
-            style={styles.username}
-            placeholder="Password"
-          />
-        </View>
-        <Text style={styles.fg}>Forgot Password</Text>
-      </View>
-    </ScrollView>
-  );
-};
+const Stack = createNativeStackNavigator();
 
-export default Login;
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+      {/* This is the main or defaul screen the app opens  */}
+      <Stack.Screen name="Home" component={HomeScreen} /> 
+        <Stack.Screen name="NewScreen" component={NewScreen} />
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-  },
-  title: {
-    textAlign: 'center',
-    paddingTop: 70,
-    textTransform: 'uppercase',
-    fontSize: 20,
-  },
-  heart: {
-    width: 100,
-    height: 100,
-    padding: 70,
-  },
-  username: {
-    height: 30,
-    borderColor: '#f22e66',
-    borderWidth: 1,
-    width: 200,
-    padding: 20,
-    borderRadius: 10,
-    margin: 10,
-  },
-  input: {
-    marginTop: 80,
-  },
-  fg: {
-    textAlign: 'center',
-    fontSize: 10,
-    color: '#f22e66',
-    
-  },
-});
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+
+export default App;
